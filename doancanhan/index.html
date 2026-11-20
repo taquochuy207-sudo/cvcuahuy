@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CV Cá Nhân - Tạ Quốc Huy</title>
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --bg: #f1f5f9;
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #64748b;
+      --border: #e2e8f0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 24px 16px;
+    }
+
+    .cv-container {
+      max-width: 960px;
+      margin: 0 auto;
+      background: var(--card);
+      border-radius: 16px;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 300px 1fr;
+    }
+
+    /* Cột trái*/
+    .sidebar {
+      background: #0f172a;
+      color: #f8fafc;
+      padding: 32px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .profile {
+      text-align: center;
+    }
+
+    .avatar {
+      width: 112px;
+      height: 112px;
+      border-radius: 50%;
+      margin: 0 auto 14px;
+      background: linear-gradient(135deg, #3b82f6, #06b6d4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      font-weight: 700;
+      color: #fff;
+      border: 4px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .profile h1 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .profile .role {
+      font-size: 14px;
+      color: #93c5fd;
+      font-weight: 500;
+    }
+
+    .sidebar-section h2 {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: #94a3b8;
+      margin-bottom: 12px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+    }
+
+    .contact-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 14px;
+    }
+
+    .contact-list a {
+      color: #e2e8f0;
+      text-decoration: none;
+      word-break: break-word;
+    }
+
+    .contact-list a:hover {
+      color: #60a5fa;
+      text-decoration: underline;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      background: rgba(59, 130, 246, 0.18);
+      color: #bfdbfe;
+      border: 1px solid rgba(96, 165, 250, 0.3);
+      padding: 5px 10px;
+      border-radius: 999px;
+      font-size: 12.5px;
+      font-weight: 500;
+    }
+
+    /* Cột phải: Nội dung chính */
+    .main-content {
+      padding: 36px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-title::before {
+      content: "";
+      width: 5px;
+      height: 20px;
+      background: var(--primary);
+      border-radius: 4px;
+      display: inline-block;
+    }
+
+    .summary p {
+      color: #334155;
+      font-size: 15px;
+    }
+
+    .timeline-item {
+      border-left: 2px solid var(--border);
+      padding-left: 18px;
+      margin-bottom: 18px;
+      position: relative;
+    }
+
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .timeline-item::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      background: var(--primary);
+      border-radius: 50%;
+      position: absolute;
+      left: -6px;
+      top: 6px;
+    }
+
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .item-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .item-time {
+      font-size: 13px;
+      color: var(--primary);
+      font-weight: 600;
+      background: #eff6ff;
+      padding: 2px 10px;
+      border-radius: 999px;
+    }
+
+    .item-subtitle {
+      font-size: 14px;
+      color: var(--muted);
+      margin: 2px 0 8px;
+      font-weight: 500;
+    }
+
+    .timeline-item ul {
+      padding-left: 18px;
+      color: #334155;
+      font-size: 14.5px;
+    }
+
+    .timeline-item li {
+      margin-bottom: 4px;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+    }
+
+    .project-card {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      background: #f8fafc;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--primary);
+    }
+
+    .project-card h3 {
+      font-size: 15px;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+
+    .project-card p {
+      font-size: 13.5px;
+      color: #475569;
+      margin-bottom: 10px;
+    }
+
+    .project-link {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .project-link:hover {
+      color: var(--primary-dark);
+      text-decoration: underline;
+    }
+
+    /* Responsive cho điện thoại & máy tính bảng */
+    @media (max-width: 780px) {
+      .cv-container {
+        grid-template-columns: 1fr;
+      }
+
+      .main-content {
+        padding: 24px 20px;
+      }
+    }
+
+    /* Tối ưu khi in hoặc lưu thành PDF */
+    @media print {
+      body {
+        background: #fff;
+        padding: 0;
+      }
+
+      .cv-container {
+        box-shadow: none;
+        border-radius: 0;
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="cv-container">
+    <!-- CỘT TRÁI -->
+    <aside class="sidebar">
+      <div class="profile">
+        <div class="avatar">TQH</div>
+        <h1>Tạ Quốc Huy</h1>      
+      </div>
+
+      <div class="sidebar-section">
+        <h2>Liên hệ</h2>
+        <ul class="contact-list">
+          <li><strong>Email:</strong> <a href="mailto:taquochuy@gmail.com">taquochuy@gmail.com</a></li>
+          <li><strong>Điện thoại:</strong> <a href="tel:0366317028">0366317028</a></li>
+          <li><strong>Địa chỉ:</strong> Nghệ An, Việt Nam</li>
+          <li><strong>GitHub:</strong> <a href="https://github.com" target="_blank">github.com/taquochuy</a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-section">
+        <h2>Kỹ năng</h2>
+        <div class="skill-tags">
+          <span class="tag">HTML</span>
+          <span class="tag">CSS </span>
+          <span class="tag">c</span>
+          <span class="tag">làm việc cá nhân</span>
+          <span class="tag">c++</span>
+          <span class="tag">Làm việc nhóm</span>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <h2>Ngoại ngữ</h2>
+        <ul class="contact-list">
+          <li><strong>Tiếng Anh:</strong> Đọc hiểu tài liệu chuyên ngành</li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- CỘT PHẢI -->
+    <main class="main-content">
+      <section class="summary">
+        <h2 class="section-title">Giới thiệu bản thân</h2>
+        <p>
+        Xin Chào mik Tên Là Tạ Quốc Huy 19 Tuổi là sinh viên năm 2 ngành Công nghệ thông tin Trường Đại Học vinh 
+      </section>
+
+      <section>
+        <h2 class="section-title">Mục tiêu nghề nghiệp</h2>
+
+        <div class="timeline-item">
+          <div class="item-header">
+            <div class="item-title">lập trình viên </div>
+            <span class="item-time"> Hiện tại</span>
+          </div>
+          <div class="item-subtitle">đang học tập </div>
+          <ul>
+            <li>Nắm vững HTML/CSS.</li>
+            <li>Có kinh nghiệm làm dự án web.</li>
+            <li>Mong muốn tìm vị trí Thực tập sinh để học hỏi và phát triển kỹ năng và học hỏi.</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item">
+          <div class="item-header">
+            <div class="item-title">Kĩ năng</div>
+            <span class="item-time">Hiện tại</span>
+          </div>
+          <ul>
+            <li>Ngôn ngữ lập trình: C/C++,SQL.</li>
+            <li>Ngoại ngữ: Tiếng Anh.</li>
+            <li>Kỹ năng nền tảng & Lập trình cơ bản</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="section-title">Dự án nổi bật</h2>
+        <div class="project-grid">
+          <div class="project-card">
+            <h3>Trang Portfolio Cá Nhân</h3>
+            <p>Portfolio cá nhân là nơi giới thiệu thông tin, kỹ năng và các dự án nổi bật, giúp thể hiện năng lực và kinh nghiệm
+            
+          </div>
+          <div class="project-card">
+            <h3>Xây dưng wed phim</h3>
+            <p>Trang web xem phim trực tuyến với nhiều thể loại phim hấp dẫn trải nghiệm mượt mà cho người dùng </p>
+            
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="section-title">Học vấn</h2>
+        <div class="timeline-item">
+          <div class="item-header">
+            <div class="item-title">Sinh Viên Năm 2</div>
+            <span class="item-time"> Hiện tại </span>
+          </div>
+          <div class="item-subtitle">Trường Đại học Vinh</div>
+          <ul>
+            <li>Đang học hỏi nền tảng phát triển web, cấu trúc dữ liệu và tư duy thiết kế giao diện.</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
